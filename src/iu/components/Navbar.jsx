@@ -13,27 +13,31 @@ export const Navbar = () => {
 
                         <NavLink 
                             className={ ({isActive}) => `nav-item   ${ isActive ? 'active':'' }` } 
-                            to="/bronze"
+                            to="/"
                         >
-                            Bronze
+                            Home
                         </NavLink>
 
                         <NavLink 
                             className={ ({isActive}) => `nav-item   ${ isActive ? 'active':'' }` }
-                            to="/gold"
+                            to="/favorito"
                         >
-                            Gold
+                            Favoritos
                         </NavLink>
-
                         <NavLink 
                             className={ ({isActive}) => `nav-item   ${ isActive ? 'active':'' }` }
-                            to="/search"
-                        >
-                            Search
+                            to="/favorito"
+                        >favo
+                            
                         </NavLink>
-
                         
                     </div>
+                    <div>
+                        <button className="avatar">
+                            <img src="https://res.cloudinary.com/dzty81hol/image/upload/v1710620894/gte9fvqfhcpavmvvrw3r.jpg" />
+                        </button>
+                    </div>
+                        
             </nav>
     )
 }

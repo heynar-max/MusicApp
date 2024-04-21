@@ -1,4 +1,4 @@
-# Saint Seita App
+# Music App
 
 Este proyecto se inició con [Create vite App](https://vitejs.dev/guide/).
 
