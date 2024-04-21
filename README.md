@@ -34,4 +34,5 @@ se usa react-icons para los iconos de la aplicación\
 animaciones solo se pone en el index.html\
 npm install react-icons
 
-
+## imagenes
+logo ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](./public/logoM.png)
