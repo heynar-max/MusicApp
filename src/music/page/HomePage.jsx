@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { CardArtist } from "../components/CardArtist"
 import { RiSearchLine } from "react-icons/ri";
 
@@ -29,10 +30,11 @@ export const HomePage = () => {
                 </section>
 
                 <nav className="navigation">
-                    <a href="#" className="navigation-item active">Descripcion</a>
-                    <a href="#" className="navigation-item">Canciónes</a>
-                    <a href="#" className="navigation-item">Album</a>
-                    <a href="#" className="navigation-item">Artistas</a>
+                
+                    <NavLink href="#" className={ ({isActive}) => `navigation-item   ${ isActive ? 'active':'' }` }>Descripcion</NavLink>
+                    <NavLink href="#" className={ ({isActive}) => `navigation-item   ${ isActive ? 'active':'' }` } >canciones</NavLink>
+                    <NavLink href="#" className={ ({isActive}) => `navigation-item   ${ isActive ? 'active':'' }` }>Album</NavLink>
+                    <NavLink href="#" className={ ({isActive}) => `navigation-item   ${ isActive ? 'active':'' }` }>Artistas</NavLink>
                 </nav>
 
                 <CardArtist/>

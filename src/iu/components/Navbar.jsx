@@ -1,43 +1,73 @@
 import { Link, NavLink } from "react-router-dom"
 import logo from '/logoM.png'
+import logo1 from '/solo.png'
 import '../../style/Navbar.css'
+import { NavbarFooter } from "./NavbarFooter"
+import { useEffect, useState } from "react"
 
 
 export const Navbar = () => {
+    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 800);
+
+    useEffect(() => {
+        // Función que se ejecuta cada vez que cambia el tamaño de la ventana
+        const handleResize = () => {
+        setIsSmallScreen(window.innerWidth < 800);
+        };
+
+        // Agregar un event listener para detectar cambios en el tamaño de la ventana
+        window.addEventListener('resize', handleResize);
+
+        // Limpiar el event listener cuando el componente se desmonta
+        return () => {
+        window.removeEventListener('resize', handleResize);
+        };
+    }, []);
     return (
-        <nav className="nav_header">
-                    <Link to="/">
-                        <img className="navbar_logo" src={logo}/>
-                    </Link>
-                    <div className="navbar-navigation">
+        <>
+            <nav className="nav_header">
+            <Link to="/">
+                {isSmallScreen ? (
+                <img className="navbar_logo" src={logo1} alt="Logo1" />
+                ) : (
+                <img className="navbar_logo" src={logo} alt="Logo" />
+                )}
+            </Link>
+                <div className="navbar-navigation">
 
-                        <NavLink 
-                            className={ ({isActive}) => `nav-item   ${ isActive ? 'active':'' }` } 
-                            to="/"
-                        >
-                            Home
-                        </NavLink>
+                    <NavLink 
+                        className={ ({isActive}) => `nav-item   ${ isActive ? 'active':'' }` } 
+                        to="/"
+                    >
+                        Home
+                    </NavLink>
 
-                        <NavLink 
-                            className={ ({isActive}) => `nav-item   ${ isActive ? 'active':'' }` }
-                            to="/favorito"
-                        >
-                            Favoritos
-                        </NavLink>
-                        <NavLink 
-                            className={ ({isActive}) => `nav-item   ${ isActive ? 'active':'' }` }
-                            to="/favorito"
-                        >favo
-                            
-                        </NavLink>
+                    <NavLink 
+                        className={ ({isActive}) => `nav-item   ${ isActive ? 'active':'' }` }
+                        to="/favorito"
+                    >
+                        Favoritos
+                    </NavLink>
+                    <NavLink 
+                        className={ ({isActive}) => `nav-item   ${ isActive ? 'active':'' }` }
+                        to="/favorito"
+                    >favo
                         
-                    </div>
-                    <div>
-                        <button className="avatar">
-                            <img src="https://res.cloudinary.com/dzty81hol/image/upload/v1710620894/gte9fvqfhcpavmvvrw3r.jpg" />
-                        </button>
-                    </div>
-                        
+                    </NavLink>
+                    
+                </div>
+
+                <div>
+                    <button className="avatar">
+                        <img src="https://res.cloudinary.com/dzty81hol/image/upload/v1710620894/gte9fvqfhcpavmvvrw3r.jpg" />
+                    </button>
+                </div>
+                    
             </nav>
+
+            <nav>
+                <NavbarFooter/>
+            </nav>
+            </>
     )
 }

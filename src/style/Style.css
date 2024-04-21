@@ -66,7 +66,6 @@ body {
 .search {
 	width: 85%;
 	position: relative;
-	z-index: 1;
 	transition: 0.15s ease;
 	&:hover,
 	&:focus-within {
@@ -170,13 +169,9 @@ body {
 	text-decoration: none;
 	color: inherit;
 	position: relative;
-	z-index: 1;
 	font-weight: 500;
 	&.active {
 		font-weight: 800;
-		&:before {
-			background-color: var(--c-yellow-500);
-		}
 	}
 
 	&:before {
@@ -192,12 +187,40 @@ body {
 		transition: 0.15s ease;
 	}
 
-	& + & {
-		margin-left: 1.25rem;
-	}
 
 	&:hover:before,
 	&:focus {
 		background-color: var(--c-yellow-500);
+	}
+}
+
+
+@media screen and (max-width:800px){
+
+	.title {
+		margin-top: 2rem;
+		width: 85%;
+		h1 {
+			margin-bottom: .5rem;
+			font-size: 1.5rem;
+			font-weight: 700;
+		}
+	
+		p {
+			font-size: 1rem;
+			margin-bottom: .5rem;
+			color: var(--c-gray-500);
+			margin-top: 0.375em;
+		}
+	}
+	.span_home{
+		margin-top: -1rem;
+	}
+}
+
+@media screen and (max-width:580px){
+	.navigation {
+		flex-direction: column;
+    	align-items: stretch;
 	}
 }
