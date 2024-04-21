@@ -1,0 +1,79 @@
+.nav_header{
+    background-color: var(--c-blue-500);
+    border-bottom-style: inset;
+    display: flex;
+    justify-content: flex-start;
+    height: 90px;
+    margin: auto;
+    position: sticky;
+    align-items: center;
+    top: 0;
+    z-index: 1;
+    padding: 1rem;
+    
+}
+.navbar_logo{
+    width: 110px;
+    height: 110px;
+    margin: 0 10rem 0 8rem;
+}
+
+
+.navbar-navigation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.nav_link{
+    text-decoration: none;
+    color: var(--tercer-color);
+}
+
+.onlogout_botton{
+    background-color: var(--sexto-color); /* Color de fondo */
+    color: var(--primer-color); /* Color del texto */
+    padding: 5px 10px; /* Espaciado interno */
+    text-align: center; /* Alineación del texto */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Mostrar como un bloque en línea */
+    font-size: 16px; /* Tamaño del texto */
+    transition-duration: 0.4s; /* Duración de la transición */
+    cursor: pointer; /* Cambiar a un cursor de puntero */
+    border-radius: 8px; /* Radio de borde para hacerlo redondeado */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Sombra */
+    font-weight: bold; /* fuente mas gruesa */
+}
+.onlogout_botton:hover{
+    color: var(--cuarto-color); /* Color del texto */
+}
+.nav-item{
+    display: flex;
+    margin-right: 2rem;
+    text-decoration: none;
+    font-size: 1.2rem;
+    list-style: none;
+    margin-left: 20px;
+    padding: 6px 15px;
+    color: #feffff;
+    border-radius: 20px;
+}
+
+.nav-item.active {
+    color: var(--primer-color); /* Cambia el color de texto cuando el enlace esté activo */
+    font-weight: bold; /* Cambia el peso de la fuente cuando el enlace esté activo */
+    background: var(--sexto-color);  /* son los bordes */
+}
+
+.nav-item:hover {
+    color: var(--cuarto-color); /* Cambia el color de texto cuando el enlace activo se está volviendo a pasar por encima */
+    background: var(--sexto-color);  /* son los bordes */
+}
+
+.span_login{
+    color: var(--primer-color);
+    margin-right: 1rem;
+}
+
+
