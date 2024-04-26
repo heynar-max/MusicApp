@@ -1,10 +1,8 @@
-import { Route, Routes } from "react-router-dom"
+import { Navigate, Route, Routes } from "react-router-dom"
 
 import { HomePage } from "../page"
 import { Navbar } from "../../iu/components"
-import { Favoritos } from "../page/Favoritos"
-import { Description } from "../page/RutasAnidadas"
-import { Song } from "../page/RutasAnidadas"
+import { Favoritos, Description, Song, Search, User, } from "../page"
 
 
 export const MusicRouter = () => {
@@ -26,8 +24,11 @@ export const MusicRouter = () => {
                             <Route path='artist' element={<Description/>}/>
                         </Route>
 
-                        <Route path="/favorito" element={<Favoritos/>}/>
-
+                        <Route path="/favorite" element={<Favoritos/>}/>
+                        <Route path="/search" element={<Search/>}/>
+                        <Route path="/user" element={<User/>}/>
+                        
+                        <Route path="/*" element={<Navigate to='/home'/>}/>
                         
                     </Routes>
                 </div>

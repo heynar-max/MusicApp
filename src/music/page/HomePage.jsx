@@ -1,4 +1,4 @@
-import { NavLink, Outlet} from "react-router-dom";
+import { Link, NavLink, Outlet} from "react-router-dom";
 import { RiSearchLine } from "react-icons/ri";
 
 
@@ -19,16 +19,19 @@ export const HomePage = () => {
                 </section>
 
                 <section className="search">
-                    <div className="search-inner">
-                        <button className="search-button">
-                            <RiSearchLine className="ai-search"/>
-                        </button>
-                        <input 
-                        type="text" 
-                        className="search-input" 
-                        placeholder="Buscar Canción" 
-                        />
-                    </div>
+                        <Link to='/search' className="search_link">
+                            <div className="search-inner">
+                                <button className="search-button">
+                                    <RiSearchLine className="ai-search"/>
+                                </button>
+                                <input 
+                                type="text" 
+                                className="search-input" 
+                                placeholder="Buscar Canción" 
+                                />
+                            </div>
+                        </Link>
+                        
                 </section>
 
                 <nav className="navigation">

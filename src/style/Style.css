@@ -123,6 +123,7 @@ body {
 	width: 70px;
 	transition: 0.15s ease;
 	cursor: pointer;
+	
 	i {
 		font-size: 1.25em;
 	}
@@ -142,6 +143,7 @@ body {
 	width: 100%;
 	padding-left: 1em;
 	padding-right: 1em;
+	text-decoration: none;
 	&:focus {
 		outline: 0;
 	}
@@ -150,6 +152,9 @@ body {
 		color: var(--c-gray-900);
 		transition: 0.15s ease;
 	}
+}
+.search_link{
+	text-decoration: none;
 }
 
 .navigation {

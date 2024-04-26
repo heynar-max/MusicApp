@@ -1,4 +1,4 @@
-import { RiHomeLine, RiHeart3Line, RiFireLine, RiSettings5Line, } from "react-icons/ri";
+import { RiHomeLine, RiHeart3Line, RiSearchLine, RiUser3Line, } from "react-icons/ri";
 import {  NavLink } from "react-router-dom";
 
 export const NavbarFooter = () => {
@@ -15,20 +15,20 @@ export const NavbarFooter = () => {
 
                     <NavLink 
                         className={ ({isActive}) => `menu-item   ${ isActive ? 'active':'' }` }
-                        to="/favorito"
+                        to="/favorite"
                     >
                         <RiHeart3Line className="ai-heart"/>
                     </NavLink>
                     <NavLink 
                         className={ ({isActive}) => `menu-item  ${ isActive ? 'active':'' }` }
-                        to="/favorit"
-                    ><RiFireLine className="ai-fire"/>
+                        to="/search"
+                    ><RiSearchLine />
                         
                     </NavLink>
                     <NavLink 
                         className={ ({isActive}) => `menu-item  ${ isActive ? 'active':'' }` }
-                        to="/favori"
-                    ><RiSettings5Line className="ai-gear"/>
+                        to="/user"
+                    ><RiUser3Line className="ai-gear"/>
                         
                     </NavLink>
                 </div>

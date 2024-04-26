@@ -44,24 +44,30 @@ export const Navbar = () => {
 
                     <NavLink 
                         className={ ({isActive}) => `nav-item   ${ isActive ? 'active':'' }` }
-                        to="/favorito"
+                        to="/favorite"
                     >
                         Favoritos
                     </NavLink>
                     <NavLink 
                         className={ ({isActive}) => `nav-item   ${ isActive ? 'active':'' }` }
-                        to="/favorito"
-                    >favo
+                        to="/search"
+                    >
+                        search
+                    </NavLink>
+                    <NavLink 
+                        className={ ({isActive}) => `nav-item   ${ isActive ? 'active':'' }` }
+                        to="/user"
+                    >User
                         
                     </NavLink>
                     
                 </div>
 
-                <div>
+                <Link to='/user'>
                     <button className="avatar">
                         <img src="https://res.cloudinary.com/dzty81hol/image/upload/v1710620894/gte9fvqfhcpavmvvrw3r.jpg" />
                     </button>
-                </div>
+                </Link>
                     
             </nav>
 
