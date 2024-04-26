@@ -26,7 +26,7 @@ export const Navbar = () => {
     return (
         <>
             <nav className="nav_header">
-            <Link to="/">
+            <Link to="/home">
                 {isSmallScreen ? (
                 <img className="navbar_logo" src={logo1} alt="Logo1" />
                 ) : (
@@ -37,7 +37,7 @@ export const Navbar = () => {
 
                     <NavLink 
                         className={ ({isActive}) => `nav-item   ${ isActive ? 'active':'' }` } 
-                        to="/"
+                        to="/home"
                     >
                         Home
                     </NavLink>

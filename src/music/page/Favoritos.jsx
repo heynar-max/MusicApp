@@ -1,4 +1,4 @@
-
+import '../../style/Card.css'
 
 export const Favoritos = () => {
     return (

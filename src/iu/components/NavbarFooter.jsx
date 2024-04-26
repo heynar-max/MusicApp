@@ -8,7 +8,7 @@ export const NavbarFooter = () => {
                 <div className="menu-inner">
                     <NavLink 
                         className={ ({isActive}) => `menu-item   ${ isActive ? 'active':'' }` } 
-                        to="/"
+                        to="/home"
                     >
                         <RiHomeLine className="ai-home"/>
                     </NavLink>

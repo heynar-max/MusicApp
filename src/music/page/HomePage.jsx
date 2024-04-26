@@ -1,9 +1,11 @@
-import { NavLink } from "react-router-dom";
-import { CardArtist } from "../components/CardArtist"
+import { NavLink, Outlet} from "react-router-dom";
 import { RiSearchLine } from "react-icons/ri";
 
 
+
 export const HomePage = () => {
+
+    
     return (
         <>
             <div className="title_home">
@@ -31,14 +33,16 @@ export const HomePage = () => {
 
                 <nav className="navigation">
                 
-                    <NavLink href="#" className={ ({isActive}) => `navigation-item   ${ isActive ? 'active':'' }` }>Descripcion</NavLink>
-                    <NavLink href="#" className={ ({isActive}) => `navigation-item   ${ isActive ? 'active':'' }` } >canciones</NavLink>
-                    <NavLink href="#" className={ ({isActive}) => `navigation-item   ${ isActive ? 'active':'' }` }>Album</NavLink>
-                    <NavLink href="#" className={ ({isActive}) => `navigation-item   ${ isActive ? 'active':'' }` }>Artistas</NavLink>
+                    {/* end: es una prop especial de React Router que indica que este 
+                    enlace debe coincidir exactamente con la URL especificada en TO. 
+                    El enlace solo será activo si la URL es /home y no si tiene subrutas 
+                    adicionales como /home/description */}
+                    <NavLink to='/home' end className={ ({isActive}) => `navigation-item   ${ isActive ? 'active':'' }` }>Descripcion</NavLink>
+                    <NavLink to={'song'} className={ ({isActive}) => `navigation-item   ${ isActive ? 'active':'' }` } >Canciones</NavLink>
+                    <NavLink to={'album'} className={ ({isActive}) => `navigation-item   ${ isActive ? 'active':'' }` }>Album</NavLink>
+                    <NavLink to={'artist'} className={ ({isActive}) => `navigation-item   ${ isActive ? 'active':'' }` }>Artistas</NavLink>
                 </nav>
-
-                <CardArtist/>
-
+                    <Outlet/>
             </div>
         </>
     )

@@ -170,8 +170,9 @@ body {
 	color: inherit;
 	position: relative;
 	font-weight: 500;
-	&.active {
+	&:focus, &.active {
 		font-weight: 800;
+		background-color: var(--c-yellow-500);
 	}
 
 	&:before {
@@ -186,8 +187,6 @@ body {
 		left: 0;
 		transition: 0.15s ease;
 	}
-
-
 	&:hover:before,
 	&:focus {
 		background-color: var(--c-yellow-500);
@@ -214,7 +213,7 @@ body {
 		}
 	}
 	.span_home{
-		margin-top: -1rem;
+		margin-top: -5rem;
 	}
 }
 
@@ -222,5 +221,8 @@ body {
 	.navigation {
 		flex-direction: column;
     	align-items: stretch;
+	}
+	.navigation-item{
+		margin-bottom: .5rem;
 	}
 }
