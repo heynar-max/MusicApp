@@ -198,6 +198,42 @@ body {
 	}
 }
 
+.cards__card{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    justify-items: center;
+	grid-gap: 4rem;
+    margin: auto;
+}
+
+@media screen and (max-width:1800px){
+.cards__card{
+    grid-template-columns: repeat(5, 1fr);
+}
+}
+@media screen and (max-width:1600px){
+.cards__card{
+    grid-template-columns: repeat(4, 1fr);
+}
+}
+@media screen and (max-width:1300px){
+
+	.cards__card{
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+@media screen and (max-width:1000px){
+
+	.cards__card{
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media screen and (max-width:650px){
+
+	.cards__card{
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
 
 @media screen and (max-width:800px){
 

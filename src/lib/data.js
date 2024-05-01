@@ -5,7 +5,7 @@ export const playlists = [
         title: "Mas Alla De La Realidad",
         cover:
             "https://res.cloudinary.com/dzty81hol/image/upload/v1714233374/xqlham3gwdkzkfdais10.jpg",
-        artists: ["AKASH"],
+        artists: ["Akash"],
     },
     {
         id: '2',
@@ -13,7 +13,7 @@ export const playlists = [
         title: "AM",
         cover:
             "https://res.cloudinary.com/dzty81hol/image/upload/v1714233474/bbazezygjc6isnmsaikk.jpg",
-        artists: ["ARTIC MOCKEY"],
+        artists: ["Arctic Monkeys"],
     },
     {
         id: '3',
@@ -21,31 +21,31 @@ export const playlists = [
         title: "Resurreción",
         cover:
             "https://res.cloudinary.com/dzty81hol/image/upload/v1714233571/rx2vnlmvu7frngc4tqjx.jpg",
-        artists: ["AKASH"],
+        artists: ["Akash"],
     },
     {
         id: '4',
         albumId: 4,
-        title: "Kronos",
+        title: "Kronos Exitos",
         cover:
             "https://res.cloudinary.com/dzty81hol/image/upload/v1714233673/j6x4oor8lhfd5j8yeoa4.jpg",
-        artists: ["KRONOS"],
+        artists: ["Kronos"],
     },
     {
         id: '5',
         albumId: 5,
-        title: "Le Mua",
+        title: "Le Mua Exitos",
         cover:
             "https://res.cloudinary.com/dzty81hol/image/upload/v1714233768/dttyn0ybxhkfcuqviie5.jpg",
-        artists: ["LE MUA"],
+        artists: ["Le Mua"],
     },
     {
-        id: '5',
-        albumId: 5,
+        id: '6',
+        albumId: 6,
         title: "REMIX",
         cover:
             "https://res.cloudinary.com/dzty81hol/image/upload/v1714233861/o2eqjyznckselkg8br6e.jpg",
-        artists: ["DUKE DOMONT","ROGER SANCHEZ","TENNEBRECK","QODES","BOB SINCLAR"],
+        artists: ["Duke Dumont","Roger Sanchez","Tennebreck","Qodes","Bob Sinclar"],
     },
 ]
 

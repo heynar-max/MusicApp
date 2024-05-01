@@ -2,7 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom"
 
 import { HomePage } from "../page"
 import { Navbar } from "../../iu/components"
-import { Favoritos, Description, Song, Search, User, } from "../page"
+import { Favoritos, Description, Song, Search, User, Album, } from "../page"
 
 
 export const MusicRouter = () => {
@@ -20,7 +20,7 @@ export const MusicRouter = () => {
                              contiene las rutas anidadas. */}
                             <Route index element={<Description />} />
                             <Route path='song' element={<Song/>}/>
-                            <Route path='album' element={<Song/>}/>
+                            <Route path='album' element={<Album/>}/>
                             <Route path='artist' element={<Description/>}/>
                         </Route>
 
