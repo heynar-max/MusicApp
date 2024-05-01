@@ -49,7 +49,7 @@ export const playlists = [
     },
 ]
 
-export const song = [
+export const songs = [
     {
         "id": 1,
         "albumId": 1,
