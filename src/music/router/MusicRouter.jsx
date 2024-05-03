@@ -4,6 +4,7 @@ import { HomePage } from "../page"
 import { Navbar } from "../../iu/components"
 import { Favoritos, Description, Song, Search, User, Album, } from "../page"
 import { PageMusicId } from "../page/RutasAnidadas/PageMusicId"
+import { Artistas } from "../page/RutasAnidadas/Artistas"
 
 
 export const MusicRouter = () => {
@@ -23,7 +24,7 @@ export const MusicRouter = () => {
                             <Route path='song' element={<Song/>}/>
                             <Route path='album' element={<Album/>}/>
                             <Route path='album/:id' element={<PageMusicId/>}/>
-                            <Route path='artist' element={<Description/>}/>
+                            <Route path='artist' element={<Artistas/>}/>
                         </Route>
 
                         <Route path="/favorite" element={<Favoritos/>}/>

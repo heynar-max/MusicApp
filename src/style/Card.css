@@ -199,6 +199,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	width: 100%;
 }
 
 .card-meta-number {
@@ -219,7 +220,7 @@
 	line-height: 0;
 	border-radius: 50%;
 	background-color: transparent;
-	i {
+	.iplay {
 		font-size: 1.75rem;
 	}
 	&:after {
@@ -241,4 +242,67 @@
 }
 .card_link{
 	text-decoration: none;
+}
+.song-list{
+	width: 85%;
+}
+card-meta-ti{
+	padding-top: 0.75rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.card-meta-title{
+	color: var(--c-gray-500);
+	font-size: 0.875rem;
+	font-weight: 500;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+}
+
+@media screen and (max-width:800px){
+	.song-list{
+		width: 100%;
+	}
+}
+@media screen and (max-width:580px){
+	.card {
+		width: 150px;
+	}
+}
+@media screen and (max-width:420px){
+	.card {
+		width: 140px;
+	}
+	.card-title {
+		font-size: 1em;
+	}
+	.card-meta-number {
+		font-size: .75rem;
+	}
+	
+	.card-meta-title{
+		font-size: 0.75rem;
+	}
+}
+@media screen and (max-width:400px){
+	.card {
+		width: 120px;
+	}
+}
+@media screen and (max-width:350px){
+	.card {
+		width: 100px;
+	}
+	.card-title {
+		font-size: .8em;
+	}
+	.card-meta-number {
+		font-size: .6rem;
+	}
+	.card-meta-title{
+		font-size: 0.6rem;
+	}
 }

@@ -1,24 +1,71 @@
+import PropTypes from 'prop-types';
 import '../../style/Card.css'
+import { filterSongs } from '../helpers/filtersongs';
+import { songs } from '../../lib/data';
+import { Link } from 'react-router-dom';
+import { RiPlayCircleFill } from "react-icons/ri";
 
-export const CardArtist = () => {
+const MAX_ARTISTS_LENGTH = 20; // Longitud máxima antes de truncar
+
+export const CardArtist = ({playlist, index}) => {
+
+    const { id, cover, artists } = playlist
+
+
+    // para mostrar la lista de artistas en un formato legible.
+    // const artistsString = artists.join(", ")
+    const isEvenIndex = index % 2 === 0;
+    
+    const playListSongs = filterSongs(songs, playlist.albumId);
+
+    // Función para truncar el texto si es demasiado largo
+    const truncateText = (text, maxLength) => {
+        return text.length > maxLength ? `${text.substring(0, maxLength)}...` : text;
+    };
+
+    const artistsString = truncateText(artists.join(', '), MAX_ARTISTS_LENGTH);
+
     return (
-        <article className="card">
-            <div className="card-inner">
-                <span className="card-pin"></span>
-                <div className="card-image">
-                <img src="https://res.cloudinary.com/dzty81hol/image/upload/v1697931368/lalfctbpxmrfvuappaxq.jpg" />
+        <>
+        
+        <Link className='card_link' to={`${id}`} >
+            <article className="card" 
+                    style={{ '--rotation': 
+                        `${index % 2 === 0 ? '5deg' : '-5deg'}` }} >
+                        
+                <div className={`card-inner ${isEvenIndex ? 'even' : 'odd'}`} >
+                    <span className="card-pin" 
+                        style={{ top: index % 2 === 0 ? '20px' : '20px', 
+                                left: index % 2 === 0 ? '20px' : 'calc(50% - 6px)', 
+                                transform: index % 2 === 0 ? 'rotate(-5deg)' : 'rotate(0)' }}>
+                    </span>
+                    <div className="card-image">
+                    <img src={cover} alt={artists} />
+                    </div>
+                    <div className="card-content">
+                    <div className="card-meta">
+                        <span className="card-meta-number">{playListSongs.length} canciones</span>
+                            <button className="card-meta-button">
+                                <RiPlayCircleFill className="iplay"/>
+                            </button>
+                    </div>
+                    <h2 className="card-title">{artistsString}</h2>
+                    </div>
                 </div>
-                <div className="card-content">
-                <div className="card-meta">
-                    <span className="card-meta-number">13 songs</span>
-                    <button className="card-meta-button">
-                    <i className="ai-circle-triangle-right-fill"></i>
-                    </button>
-                </div>
-                <h2 className="card-title">Heroes Del Silencio</h2>
-                <h2 className="card-title">Avalancha</h2>
-                </div>
-            </div>
-        </article>
+            </article>
+            </Link>
+        </>
     )
 }
+CardArtist.propTypes = {
+    playlist: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        cover: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        artists: PropTypes.arrayOf(PropTypes.string).isRequired,
+        albumId: PropTypes.number.isRequired,
+    }).isRequired,
+    index: PropTypes.number.isRequired,
+};
+
+

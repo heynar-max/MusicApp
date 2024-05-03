@@ -1,8 +1,8 @@
-import { CardArtist } from "../../components/CardArtist"
+
 
 
 export const Description = () => {
     return (
-        <CardArtist/>
+        <h1>descripcion</h1>
     )
 }

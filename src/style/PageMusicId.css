@@ -50,6 +50,9 @@
     }
 }
 @media screen and (max-width:800px){
+    .PageMusic_container{
+        width: 100%;
+    }
     .PageMusic_img{
         width: 200px;
         height: 200px;
