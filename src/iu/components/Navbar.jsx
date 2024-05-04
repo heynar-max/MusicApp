@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom"
 import logo from '/logoM.png'
 import logo1 from '/solo.png'
 import '../../style/Navbar.css'
-import { NavbarFooter } from "./NavbarFooter"
+import { NavbarFooter, Player } from "./"
 import { useEffect, useState } from "react"
 
 
@@ -71,6 +71,9 @@ export const Navbar = () => {
                     
             </nav>
 
+            <nav>
+                <Player/>
+            </nav>
             <nav>
                 <NavbarFooter/>
             </nav>
