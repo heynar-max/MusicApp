@@ -8,7 +8,7 @@
 	transition: 0.15s ease-out;
 	
 	& + & {
-		margin-left: 2rem;
+		margin-left: .8rem;
 	}
 	&:hover,
 	&:focus-within {
@@ -223,7 +223,7 @@
 	.iplay {
 		font-size: 1.75rem;
 	}
-	&:after {
+	/* &:after {
 		content: "";
 		display: block;
 		position: absolute;
@@ -231,7 +231,7 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-	}
+	} */
 }
 
 .card-title {

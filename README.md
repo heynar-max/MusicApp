@@ -31,8 +31,12 @@ Enrutamiento a una aplicación web de React\
 `npm i react-router-dom@v6.22.3`\
 se usa react-icons para los iconos de la aplicación\
 `npm install react-icons`\
-animaciones solo se pone en el index.html\
+se instala react-icons\
 npm install react-icons
+`npm install @reduxjs/toolkit react-redux`\
+se una Redux Toolkit\
+se usa por que la el estado global es mas eficiente\
+npm install @reduxjs/toolkit react-redux
 
 ## imagenes
 logo ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](./public/logoM.png)

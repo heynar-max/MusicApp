@@ -3,9 +3,10 @@ import '../../style/Card.css'
 import { filterSongs } from '../helpers/filtersongs';
 import { songs } from '../../lib/data';
 import { Link } from 'react-router-dom';
-import { RiPlayCircleFill } from "react-icons/ri";
+import { PlayButton } from './PlayButton';
 
 const MAX_ARTISTS_LENGTH = 20; // Longitud máxima antes de truncar
+
 export const CardAlbum = ({playlist, index}) => {
 
     const { id, cover, title, artists } = playlist
@@ -27,7 +28,6 @@ export const CardAlbum = ({playlist, index}) => {
     return (
         <>
         
-        <Link className='card_link' to={`${id}`} >
             <article className="card" 
                     style={{ '--rotation': 
                         `${index % 2 === 0 ? '5deg' : '-5deg'}` }} >
@@ -35,18 +35,21 @@ export const CardAlbum = ({playlist, index}) => {
                 <div className={`card-inner ${isEvenIndex ? 'even' : 'odd'}`} >
                     <span className="card-pin" 
                         style={{ top: index % 2 === 0 ? '20px' : '20px', 
-                                left: index % 2 === 0 ? '20px' : 'calc(50% - 6px)', 
-                                transform: index % 2 === 0 ? 'rotate(-5deg)' : 'rotate(0)' }}>
+                        left: index % 2 === 0 ? '20px' : 'calc(50% - 6px)', 
+                        transform: index % 2 === 0 ? 'rotate(-5deg)' : 'rotate(0)' }}>
                     </span>
+                    
                     <div className="card-image">
-                    <img src={cover} alt={artists} />
+                        <Link className='card_link' to={`${id}`} >
+                            <img src={cover} alt={artists} />
+                        </Link>
                     </div>
                     <div className="card-content">
                     <div className="card-meta">
                         <span className="card-meta-number">{playListSongs.length} canciones</span>
-                            <button className="card-meta-button">
-                                <RiPlayCircleFill className="iplay"/>
-                            </button>
+                            <div className="card-meta-button">
+                                <PlayButton id={id} />
+                            </div>
                     </div>
                     <h2 className="card-title">{artistsString}</h2>
                     <div className="card-meta-ti">
@@ -55,7 +58,6 @@ export const CardAlbum = ({playlist, index}) => {
                     </div>
                 </div>
             </article>
-            </Link>
         </>
     )
 }

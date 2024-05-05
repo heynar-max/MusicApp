@@ -228,12 +228,6 @@ body {
 		grid-template-columns: repeat(2, 1fr);
 	}
 }
-@media screen and (max-width:450px){
-
-	.cards__card{
-		grid-gap: 2rem;
-	}
-}
 
 @media screen and (max-width:800px){
 
@@ -264,6 +258,9 @@ body {
 	.span_home{
 		margin-top: -5rem;
 	}
+	.cards__card{
+		grid-gap: 1rem;
+	}
 }
 
 @media screen and (max-width:580px){
@@ -276,3 +273,10 @@ body {
 		margin-bottom: .5rem;
 	}
 }
+@media screen and (max-width:450px){
+
+	.cards__card{
+		grid-gap: 1rem;
+	}
+}
+

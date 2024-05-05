@@ -1,10 +1,13 @@
-import { useRef, useState } from 'react';
+import { useRef} from 'react';
 import '../../style/player.css'
 import { RiPlayCircleFill, RiPauseCircleFill } from "react-icons/ri";
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleIsPlayer } from '../../store/play/playSlice';
 
 export const Player = () => {
 
-    const [isPlayer, setIsPlayer] = useState(false)
+    const dispatch = useDispatch();
+    const isPlayer = useSelector(state => state.play.isPlayer);
     const audioRef = useRef()
 
     const handleClick = () => {
@@ -13,11 +16,12 @@ export const Player = () => {
             // si esta en marcha ponerlo en pausa 
             audioRef.current.pause()
         }else{
-            audioRef.current.src = `/public/music/5/2.mp3`
+            audioRef.current.src = `/music/6/2.mp3`
             // para reproducir la musica 
             audioRef.current.play()
         }
-        setIsPlayer(!isPlayer)
+        dispatch(toggleIsPlayer()); // Despacha la acción para alternar isPlayer en el store
+
     }
 
     return (
