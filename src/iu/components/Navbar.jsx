@@ -72,7 +72,7 @@ export const Navbar = () => {
             </nav>
 
             <nav>
-                <Player/>
+                <Player />
             </nav>
             <nav>
                 <NavbarFooter/>

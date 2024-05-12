@@ -26,6 +26,11 @@ Cuenta con CSS, no se usa bibliotecas multiplataforma\
 o conjunto de herramientas de código abierto para diseño\
 de sitios y aplicaciones web
 
+## Firebase
+esta configurado para la base de datos en firebase\
+para ingresar con login y registro\
+CRUD
+
 ## Bibliotecas usadas en la Aplicación
 Enrutamiento a una aplicación web de React\
 `npm i react-router-dom@v6.22.3`\
@@ -37,6 +42,10 @@ npm install react-icons
 se una Redux Toolkit\
 se usa por que la el estado global es mas eficiente\
 npm install @reduxjs/toolkit react-redux
+`npm install axios`\
+se una Axios\
+para las solicitudes\
+
 
 ## imagenes
 logo ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](./public/logoM.png)

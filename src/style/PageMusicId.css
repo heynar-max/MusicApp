@@ -8,6 +8,7 @@
     padding: 1rem 2rem;
     background-color: #fff;
     position: relative;
+    justify-content: space-evenly;
 	&:after {
 		content: "";
 		display: block;

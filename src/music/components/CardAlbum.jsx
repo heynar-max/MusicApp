@@ -1,15 +1,33 @@
 import PropTypes from 'prop-types';
 import '../../style/Card.css'
 import { filterSongs } from '../helpers/filtersongs';
-import { songs } from '../../lib/data';
 import { Link } from 'react-router-dom';
 import { PlayButton } from './PlayButton';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const MAX_ARTISTS_LENGTH = 20; // Longitud máxima antes de truncar
 
 export const CardAlbum = ({playlist, index}) => {
 
-    const { id, cover, title, artists } = playlist
+    const { _id, cover, title, artists, albumId } = playlist
+    const [songs, setSongs] = useState([]);
+
+    useEffect(() => {
+        const fetchSongs = async () => {
+            try {
+                // Realizar la solicitud HTTP para obtener las canciones del álbum
+                const response = await axios.get(`/api/songs?albumId=${albumId}`);
+                setSongs(response.data); // Actualizar el estado local con las canciones obtenidas
+            } catch (error) {
+                console.error('Error fetching songs:', error);
+            }
+        };
+        fetchSongs();
+        return () => {
+            
+        };
+    }, [albumId]); 
 
 
     // para mostrar la lista de artistas en un formato legible.
@@ -40,7 +58,7 @@ export const CardAlbum = ({playlist, index}) => {
                     </span>
                     
                     <div className="card-image">
-                        <Link className='card_link' to={`${id}`} >
+                        <Link className='card_link' to={`${_id}`} >
                             <img src={cover} alt={artists} />
                         </Link>
                     </div>
@@ -48,7 +66,7 @@ export const CardAlbum = ({playlist, index}) => {
                     <div className="card-meta">
                         <span className="card-meta-number">{playListSongs.length} canciones</span>
                             <div className="card-meta-button">
-                                <PlayButton id={id} />
+                                <PlayButton id={_id} />
                             </div>
                     </div>
                     <h2 className="card-title">{artistsString}</h2>
@@ -63,7 +81,7 @@ export const CardAlbum = ({playlist, index}) => {
 }
 CardAlbum.propTypes = {
     playlist: PropTypes.shape({
-        id: PropTypes.string.isRequired,
+        _id: PropTypes.string.isRequired,
         cover: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         artists: PropTypes.arrayOf(PropTypes.string).isRequired,

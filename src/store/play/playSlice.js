@@ -17,7 +17,12 @@ const initialState = {
             state.isPlayer = !state.isPlayer;
         },
         setCurrentMusic(state, action) {
-        state.currentMusic = action.payload;
+            const { songs, playlist } = action.payload;
+            state.currentMusic = {
+                playlist,
+                songs,
+                song: songs.length > 0 ? songs[0] : null, // Assuming you want to set the first song as the current song
+            };
         },
     },
 });

@@ -1,45 +1,72 @@
 import { useParams } from "react-router-dom"
-import { playlists, songs } from "../../../lib/data";
-import { filterSongs } from "../../helpers/filtersongs";
 import '../../../style/PageMusicId.css'
-
-// Función para convertir duración "minutos:segundos" a segundos
-function durationToSeconds(duration) {
-    const [minutes, seconds] = duration.split(':');
-    return parseInt(minutes) * 60 + parseInt(seconds);
-}
-
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { PlayButton } from "../../components/PlayButton";
 
 
 export const PageMusicId = () => {
 
+
     const { id } = useParams();
+    const [playlist, setPlaylist] = useState(null);
+    const [playListSongs, setPlayListSongs] = useState([]);
+    const [totalDuration, setTotalDuration] = useState('');
 
-    const  playlist = playlists.find((playlist) => playlist.id === id)
-    
-    // Filtra las canciones según el albumId de la playlist encontrada
-    const playListSongs = filterSongs(songs, playlist?.albumId);
 
-    // Calcular la duración total en segundos
-const totalSeconds = playListSongs.reduce((total, song) => {
-    return total + durationToSeconds(song.duration);
-}, 0);
+    useEffect(() => {
+        const fetchPlaylistData = async () => {
+            try {
+                // Hacer una solicitud GET para obtener la playlist por ID
+                const playlistResponse = await axios.get(`/api/playlists/${id}`);
 
-// Función para convertir segundos a formato "horas:minutos"
-function secondsToHoursMinutes(seconds) {
-    const hours = Math.floor(seconds / 3600);
-    const remainingSeconds = seconds % 3600;
-    const minutes = Math.floor(remainingSeconds / 60);
+                const filteredSongs = playlistResponse.data.songs;
 
-    if (hours > 0) {
-        return `${hours} h ${minutes} min`;
-    } else {
-        return `${minutes} min`;
+                // Establecer la playlist obtenida en el estado
+                setPlaylist(playlistResponse.data.playlist);
+
+
+                // Establecer las songs obtenida en el estado
+                setPlayListSongs(filteredSongs);
+
+                // Establecer las canciones filtradas y calcular la duración total
+
+                const totalSeconds = filteredSongs.reduce((total, song) => {
+                    return total + durationToSeconds(song.duration);
+                }, 0);
+
+                const formattedDuration = secondsToHoursMinutes(totalSeconds);
+                setTotalDuration(formattedDuration);
+            } catch (error) {
+                console.error('Error fetching playlist data:', error);
+            }
+        };
+
+        fetchPlaylistData();
+    }, [id]);
+
+    // Función para convertir duración "minutos:segundos" a segundos
+    const durationToSeconds = (duration) => {
+        const [minutes, seconds] = duration.split(':');
+        return parseInt(minutes) * 60 + parseInt(seconds);
+    };
+
+    // Función para convertir segundos a formato "horas:minutos"
+    const secondsToHoursMinutes = (seconds) => {
+        const hours = Math.floor(seconds / 3600);
+        const remainingSeconds = seconds % 3600;
+        const minutes = Math.floor(remainingSeconds / 60);
+
+        if (hours > 0) {
+            return `${hours} h ${minutes} min`;
+        } else {
+            return `${minutes} min`;
+        }
+    };
+
+    if (!playlist) {
+        return <div>Loading...</div>;
     }
-}
-
-// Obtener la duración total en formato "horas:minutos"
-const totalDuration = secondsToHoursMinutes(totalSeconds);
     
     return (
         <>
@@ -75,6 +102,9 @@ const totalDuration = secondsToHoursMinutes(totalSeconds);
             </div>
             </div>
             </div>
+                <div className="card-meta-button">
+                    <PlayButton id={id} />
+                </div>
         </header>
         </>
         
