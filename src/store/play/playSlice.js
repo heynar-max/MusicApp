@@ -4,6 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
     isPlayer: false,
     currentMusic: { playlist: null, song: null, songs: [] },
+    volume: 1,
 };
 
     const playSlice = createSlice({
@@ -24,8 +25,11 @@ const initialState = {
                 song: songs.length > 0 ? songs[0] : null, // Assuming you want to set the first song as the current song
             };
         },
+        setVolume(state, action) {
+            state.volume = action.payload;
+        },
     },
 });
 
-export const { setIsPlayer, toggleIsPlayer, setCurrentMusic } = playSlice.actions;
+export const { setIsPlayer, toggleIsPlayer, setCurrentMusic,  setVolume } = playSlice.actions;
 export default playSlice.reducer;

@@ -1,9 +1,10 @@
-
-import { useEffect, useRef, useState} from 'react';
+import { useEffect, useRef} from 'react';
 import '../../style/player.css'
 import { RiPlayCircleFill, RiPauseCircleFill } from "react-icons/ri";
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleIsPlayer } from '../../store/play/playSlice';
+import { ImagenPlayer } from '../../music/components/ImagenPlayer';
+
 
 export const Player = () => {
 
@@ -11,52 +12,45 @@ export const Player = () => {
     const isPlayer = useSelector(state => state.play.isPlayer);
     const audioRef = useRef()
     const currentMusic = useSelector(state => state.play.currentMusic);
-    // Estado para almacenar el tiempo actual de reproducción
-    const [currentTime, setCurrentTime] = useState(0);
+    const volumeRef = useRef(1)
     
+
+    useEffect(() => {
+        isPlayer
+            ? audioRef.current.play()
+            : audioRef.current.pause()
+        }, [isPlayer])
 
     useEffect(() => {
         const { song, playlist } = currentMusic;
         if (song) {
             const src = `/music/${playlist?.id}/${song.id}.mp3`;
-            
             audioRef.current.src = src;
-            
-            if (isPlayer) {
-                audioRef.current.play();
+            audioRef.current.volume = volumeRef.current;
+            audioRef.current.play();
             }
-        }
-    }, [currentMusic, isPlayer]);
+        }, [currentMusic]);
     
-    const handleClick = () => {
-                // cuando le de un handleClick ejecttar audioRef.current.src
-                if (isPlayer) {
-                    // si esta en marcha ponerlo en pausa 
-                    audioRef.current.pause()
-                    setCurrentTime(audioRef.current.currentTime);
-                }else {
-                    // Usa una promesa para asegurar que el audio se cargue antes de reproducirse
-                    audioRef.current.play()
-                    
-                    .then(() => {
-                        // Si hay un tiempo actual guardado, establece el tiempo de reproducción
-                        if (currentTime > 0) {
-                            audioRef.current.currentTime = currentTime;
-                        }
-                    }).catch(error => {
-                        console.log("Error al reproducir el audio:", error);
-                    });
-                }
-                dispatch(toggleIsPlayer()); // Despacha la acción para alternar isPlayer en el store
-        
-            }
+        const handleClick = () => {
+            dispatch(toggleIsPlayer());
+        };
 
+        const handleVolumeChange = (event) => {
+            const newVolume = event.target.value / 100;
+            volumeRef.current = newVolume;
+            if (audioRef.current) {
+                audioRef.current.volume = newVolume;
+            }
+        };
+
+        
     return (
         <div className="player_container">
             <div className='player_content'>
                 <div>
-                    imagen...
+                    <ImagenPlayer {...currentMusic.song}/>
                 </div>
+                {/* Player  */}
                 <div className='player_player'>
                     <button className='player_boton' onClick={handleClick}>
                         {isPlayer ? <RiPauseCircleFill className='player_icon'/> : <RiPlayCircleFill className='player_icon' /> }
@@ -65,12 +59,21 @@ export const Player = () => {
                     <audio ref={audioRef} />
                 </div>
                 <div>
-                    volumen...
+                <div>
+                    {/* Slider  */}
+                    <input
+                            type="range"
+                            className='range'
+                            defaultValue={100}
+                            max={100}
+                            min={0}
+                            onChange={handleVolumeChange}
+                        />
+            </div>
                 </div>
             </div>
             
         </div>
     )
 }
-
 

@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
 import { RiPlayCircleFill } from "react-icons/ri";
-
-
 import '../../style/Card.css'
 
 export const CardSong = ({ song }) => {
