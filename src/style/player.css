@@ -64,18 +64,30 @@
     border-radius: 15px;
     appearance: none;
     overflow: hidden;
-  }
-  
-  .range::-webkit-slider-thumb{
+    margin-right: .5rem;
+}
+
+.range::-webkit-slider-thumb{
     appearance: none;
-    width: 15px;
-    height: 15px;
+    width: 1px;
+    height: 1px;
     background: #111;
     border-radius: 50%;
-    border:  2px solid #060606;
-    box-shadow: -67px 0 0 60px #111 ;
+    box-shadow: -67px 0 0 66px #111 ;
     cursor: pointer;
-  }
+}
+
+.volume_icon{
+    background-color: var(--c-blue-500);
+    border: none;
+    font-size: 1.2rem;
+    margin-right: .5rem;
+    display: flex;
+}
+.slider{
+    display: flex;
+    align-items: center;
+}
 
 @media screen and (max-width:800px){
     .player_content{

@@ -1,9 +1,10 @@
-import { useEffect, useRef} from 'react';
+import { useEffect, useRef, useState} from 'react';
 import '../../style/player.css'
 import { RiPlayCircleFill, RiPauseCircleFill } from "react-icons/ri";
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleIsPlayer } from '../../store/play/playSlice';
+import { setVolume, toggleIsPlayer } from '../../store/play/playSlice';
 import { ImagenPlayer } from '../../music/components/ImagenPlayer';
+import { FaVolumeMute, FaVolumeUp  } from "react-icons/fa";
 
 
 export const Player = () => {
@@ -12,7 +13,8 @@ export const Player = () => {
     const isPlayer = useSelector(state => state.play.isPlayer);
     const audioRef = useRef()
     const currentMusic = useSelector(state => state.play.currentMusic);
-    const volumeRef = useRef(1)
+    const volume = useSelector(state => state.play.volume);
+    const [prevVolume, setPrevVolume] = useState(volume);
     
 
     useEffect(() => {
@@ -26,20 +28,35 @@ export const Player = () => {
         if (song) {
             const src = `/music/${playlist?.id}/${song.id}.mp3`;
             audioRef.current.src = src;
-            audioRef.current.volume = volumeRef.current;
+            audioRef.current.volume = volume;
             audioRef.current.play();
             }
         }, [currentMusic]);
+
+        useEffect(() => {
+            if (audioRef.current) {
+                audioRef.current.volume = volume;
+            }
+        }, [volume]);
     
         const handleClick = () => {
             dispatch(toggleIsPlayer());
         };
 
+        
         const handleVolumeChange = (event) => {
             const newVolume = event.target.value / 100;
-            volumeRef.current = newVolume;
-            if (audioRef.current) {
-                audioRef.current.volume = newVolume;
+            if (newVolume === 0) {
+                setPrevVolume(volume);
+            }
+            dispatch(setVolume(newVolume));
+        };
+        const handleVolumeClick = () => {
+            if (volume > 0) {
+                setPrevVolume(volume);
+                dispatch(setVolume(0));
+            } else {
+                dispatch(setVolume(prevVolume));
             }
         };
 
@@ -58,18 +75,25 @@ export const Player = () => {
                     {/* Aquí asigna la referencia al elemento <audio> */}
                     <audio ref={audioRef} />
                 </div>
-                <div>
-                <div>
+                <div className='slider'>
+                
                     {/* Slider  */}
-                    <input
+
+                    <button
+                            className="volume_icon"
+                            onClick={handleVolumeClick}
+                        >
+                            {volume === 0 ? <FaVolumeMute /> : <FaVolumeUp />}
+                        </button>
+                        <input
                             type="range"
                             className='range'
-                            defaultValue={100}
+                            value={volume * 100}
                             max={100}
                             min={0}
                             onChange={handleVolumeChange}
                         />
-            </div>
+            
                 </div>
             </div>
             

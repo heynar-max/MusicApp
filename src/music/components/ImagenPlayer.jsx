@@ -25,3 +25,6 @@ ImagenPlayer.propTypes = {
     title: PropTypes.string.isRequired,
     artists: PropTypes.arrayOf(PropTypes.string),
 }
+ImagenPlayer.defaultProps = {
+    artists: [],
+};
