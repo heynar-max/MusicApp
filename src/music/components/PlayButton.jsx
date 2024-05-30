@@ -21,7 +21,7 @@ export const PlayButton = ({ id }) => {
             const response = await axios.get(`/api/playlists/${id}`);
             const { songs, playlist } = response.data;
             dispatch(setIsPlayer(true)); // Start playing
-            dispatch(setCurrentMusic({ songs, playlist, song: songs[0] })); // Set current playlist and songs
+            dispatch(setCurrentMusic({ songs, playlist })); // Set current playlist and songs
         
     }
 

@@ -15,6 +15,38 @@ export const Player = () => {
     const currentMusic = useSelector(state => state.play.currentMusic);
     const volume = useSelector(state => state.play.volume);
     const [prevVolume, setPrevVolume] = useState(volume);
+
+    const [currentTime, setCurrentTime] = useState(0);
+
+    useEffect(() => {
+        const handleTimeUpdate = () => {
+            if (audioRef.current) {
+                setCurrentTime(audioRef.current.currentTime);
+            }
+        };
+
+        const audioElement = audioRef.current;
+        if (audioElement) {
+            audioElement.addEventListener('timeupdate', handleTimeUpdate);
+        }
+    
+        return () => {
+            if (audioElement) {
+                audioElement.removeEventListener('timeupdate', handleTimeUpdate);
+            }
+        };
+    }, []);
+
+    const formatTime = (time) => {
+        if (time == null) return `0:00`;
+
+        const seconds = Math.floor(time % 60);
+        const minutes = Math.floor(time / 60);
+
+        return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    };
+
+    const duration = audioRef.current?.duration ?? 0;
     
 
     useEffect(() => {
@@ -65,15 +97,36 @@ export const Player = () => {
         <div className="player_container">
             <div className='player_content'>
                 <div>
-                    <ImagenPlayer {...currentMusic.song}/>
+                {currentMusic.song && <ImagenPlayer image={currentMusic.song.image} title={currentMusic.song.title} artists={currentMusic.song.artists} />}
                 </div>
                 {/* Player  */}
                 <div className='player_player'>
+
                     <button className='player_boton' onClick={handleClick}>
                         {isPlayer ? <RiPauseCircleFill className='player_icon'/> : <RiPlayCircleFill className='player_icon' /> }
                     </button>
                     {/* Aquí asigna la referencia al elemento <audio> */}
                     <audio ref={audioRef} />
+                    <div className='range_control'>
+                        <span className='range_control_span'>{formatTime(currentTime)}</span>
+                        <input
+                            type="range"
+                            className='song_control'
+                            value={currentTime}
+                            max={String(duration)}
+                            min={0}
+                            onChange={(e) => {
+                                const newCurrentTime = e.target.value;
+                                setCurrentTime(newCurrentTime);
+                                audioRef.current.currentTime = newCurrentTime;
+                            }}
+                        />
+                        <span >
+                            {duration ? formatTime(duration) : '0:00'}
+                        </span>
+
+                    </div>
+                    
                 </div>
                 <div className='slider'>
                 
